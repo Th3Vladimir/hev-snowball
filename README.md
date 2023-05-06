@@ -25,7 +25,7 @@ tvary než jen obdélníky.
 
 
 
-## zanmky
+## znamky
 1. Zpracování – kvalita zpracování
 Např. Grafika, UI, animace, originalita, návrh tříd…
 2. Gameplay – mechaniky, které mají vliv na hráče (aby se necítil ztracený atd.)
