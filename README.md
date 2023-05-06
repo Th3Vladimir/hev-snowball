@@ -1,6 +1,6 @@
 # hev-snowball
 
-- [zadaní](https://github.com/Th3Vladimir/hev-snowball/blob/main/zadani.md)
+- [zadaní](https://github.com/Th3Vladimir/hev-snowball/blob/main/Snowball.pdf)
 
 
 - navíc: uložení progressu, led, ? hp
