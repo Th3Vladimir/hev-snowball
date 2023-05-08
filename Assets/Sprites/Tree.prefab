@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7940852643593561506}
-  - component: {fileID: -410495274676809484}
+  - component: {fileID: -5451766457066217317}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -33,8 +33,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &-410495274676809484
-BoxCollider2D:
+--- !u!68 &-5451766457066217317
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -47,18 +47,20 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.0023171902, y: 1.553741}
+  - {x: 1.2413192, y: -0.6972484}
+  - {x: 0.19417441, y: -0.701982}
+  - {x: 0.19494106, y: -1.5420669}
+  - {x: -0.22874399, y: -1.5555148}
+  - {x: -0.23155373, y: -0.7086921}
+  - {x: -1.2295971, y: -0.68830186}
+  - {x: 0.0023172945, y: 1.553741}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &7467311367444355894
 GameObject:
   m_ObjectHideFlags: 0

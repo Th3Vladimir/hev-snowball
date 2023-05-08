@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BoostEffect : MonoBehaviour
 {
-
-    public float boostMultiplier = 2.0f;
+     [SerializeField] float boostMultiplier = 3.0f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +13,5 @@ public class BoostEffect : MonoBehaviour
         float currentSpeed = ballRb.velocity.magnitude;
         ballRb.velocity = ballRb.velocity.normalized * currentSpeed * boostMultiplier;
     }
-
-
 }
+
