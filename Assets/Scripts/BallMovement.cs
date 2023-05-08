@@ -10,6 +10,7 @@ public class BallMovement : MonoBehaviour
     private LineRenderer lineRenderer;
     private Rigidbody2D rb;
     private float currentLineLength = 0f;
+    private float lastSpeed;
 
     [SerializeField]
     float maxPower;
@@ -17,6 +18,8 @@ public class BallMovement : MonoBehaviour
     float maxVelocity = 0.1f;
     [SerializeField]
     float maxLineLength = 5f;
+    [SerializeField]
+    float sizeIncreaseFactor = 0.01f;
 
     void Start()
     {
@@ -25,10 +28,12 @@ public class BallMovement : MonoBehaviour
         lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 2;
         
-        lineRenderer.startColor = Color.cyan;
-        lineRenderer.endColor = Color.cyan;
+        lineRenderer.startColor = Color.black;
+        lineRenderer.endColor = Color.black;
 
         rb = GetComponent<Rigidbody2D>();
+
+        lastSpeed = rb.velocity.magnitude;
     }
 
     void Update()
@@ -73,5 +78,19 @@ public class BallMovement : MonoBehaviour
                 lineRenderer.enabled = false;
             }
         }
+
+
+        float currentSpeed = rb.velocity.magnitude;
+
+        if (currentSpeed > 0.4f)
+        {
+            transform.localScale += new Vector3(sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime);
+        }
+        else
+        {
+            //rb.velocity = Vector3.zero;
+            rb.AddForce(-rb.velocity.normalized * 0.1f, ForceMode2D.Force);
+        }
+
     }
 }
