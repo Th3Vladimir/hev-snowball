@@ -63,8 +63,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5871ace1c79929a418e404bdcc36a750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionImage: {fileID: 0}
+  transitionSpeed: 2
+  nextSceneName: level1
   player: {fileID: 0}
   bigBall: {fileID: 5510931782200794760}
+  smallBall: {fileID: 5510931781790198522}
+  levelNameText: {fileID: 0}
+  displayDuration: 1
 --- !u!1 &5510931781790198522
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5510931781790198523}
   - component: {fileID: 5510931781790198524}
+  - component: {fileID: 120340022}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -90,7 +97,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5510931781790198522}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.017, y: 0.476, z: 0}
+  m_LocalPosition: {x: -0.944, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,6 +156,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &120340022
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510931781790198522}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000047683716, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.65000015
 --- !u!1 &5510931782200794760
 GameObject:
   m_ObjectHideFlags: 0

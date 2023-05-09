@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostMultiplier: 3
+  sizeDecrease: 0.85

@@ -11,6 +11,11 @@ public class SnowEffect : MonoBehaviour
         Debug.Log("collided with snow");
 
         Rigidbody2D ballRb = collision.gameObject.GetComponent<Rigidbody2D>();
-        ballRb.AddForce(-ballRb.velocity.normalized * frictionForce);
+        Transform ballTrans = collision.gameObject.GetComponent<Transform>();
+        if(ballRb != null)
+            ballRb.AddForce(-ballRb.velocity.normalized * frictionForce);
+        if (ballTrans != null && ballRb.velocity.magnitude > 0.1f)
+            ballTrans.localScale += new Vector3(0.0025f, 0.0025f, 0.0025f);
+
     }
 }

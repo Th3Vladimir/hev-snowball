@@ -102,11 +102,12 @@ public class Finish : MonoBehaviour
     public string nextSceneName;
     public GameObject player;
     public GameObject bigBall;
+    public GameObject smallBall;
     public TextMeshProUGUI levelNameText;
     public float displayDuration = 1.0f;
 
 
-    private bool isFading;
+    public static bool isFading { get; private set; }
 
     private void Start()
     {
@@ -119,7 +120,8 @@ public class Finish : MonoBehaviour
         {
             float playerRadius = player.GetComponent<CircleCollider2D>().radius;
             float bigBallRadius = bigBall.GetComponent<CircleCollider2D>().radius;
-            if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x)
+            float smallBallRadius = smallBall.GetComponent<CircleCollider2D>().radius;
+            if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x && playerRadius * player.transform.localScale.x > smallBallRadius * smallBall.transform.localScale.x)
             {
                 // Player has reached the finish, and is small enough to proceed to next level
                 LoadScene(nextSceneName);
@@ -174,7 +176,7 @@ public class Finish : MonoBehaviour
         }
 
         isFading = false;
-
+        
         levelNameText.enabled = false;
     }
 }
