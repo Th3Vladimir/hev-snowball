@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour
 {
@@ -38,7 +39,11 @@ public class BallMovement : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restarts the level on "R"
+        }
+
         if (Input.GetMouseButtonDown(0) && rb.velocity.magnitude < maxVelocity)
         {
             isDragging = true;

@@ -8,18 +8,17 @@ public class CheckForAnim : MonoBehaviour
     private Collider2D collider;
     private bool isPassable = true;
     // Start is called before the first frame update
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         collider = GetComponent<Collider2D>();
     }
 
-    
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision detected");
         animator.SetTrigger("Touched");
-
-
     }
-    
+
 }

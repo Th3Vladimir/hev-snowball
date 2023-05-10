@@ -111,7 +111,7 @@ public class Finish : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeOut());        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -124,6 +124,9 @@ public class Finish : MonoBehaviour
             if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x && playerRadius * player.transform.localScale.x > smallBallRadius * smallBall.transform.localScale.x)
             {
                 // Player has reached the finish, and is small enough to proceed to next level
+                PlayerPrefs.SetInt("currentLevel", SceneManager.GetActiveScene().buildIndex + 1);
+                PlayerPrefs.Save();
+
                 LoadScene(nextSceneName);
             }
         }
