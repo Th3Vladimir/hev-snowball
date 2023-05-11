@@ -18,6 +18,7 @@ public class levelSelector : MonoBehaviour
         if (currentLevel <= 0)
         {
             PlayerPrefs.SetInt("currentLevel", 1);
+            currentLevel = PlayerPrefs.GetInt("currentLevel");
         }
 
         foreach (Transform button in panelButtons.transform)
