@@ -51,6 +51,8 @@ public class BallMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restarts the level on "R"
         }
 
+
+
         MouseControlsCheck();
 
 

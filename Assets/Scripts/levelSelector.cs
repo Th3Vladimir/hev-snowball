@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class levelSelector : MonoBehaviour
@@ -13,9 +14,14 @@ public class levelSelector : MonoBehaviour
     void Start()
     {
         //reset progress
-        PlayerPrefs.SetInt("currentLevel", 1);
+        ///*PlayerPrefs.SetInt("currentLevel", 1);*/
         //--------------------------------------------------------------------
         currentLevel = PlayerPrefs.GetInt("currentLevel");
+
+        if(currentLevel <= 0)
+        {
+            PlayerPrefs.SetInt("currentLevel", 1);
+        }
 
         foreach (Transform button in panelButtons.transform)
         {
@@ -44,7 +50,11 @@ public class levelSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            PlayerPrefs.SetInt("currentLevel", 1); // resets the progress on "I"
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 
