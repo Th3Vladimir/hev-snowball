@@ -30,8 +30,7 @@ public class BallMovement : MonoBehaviour
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 2;
-        Material whiteDiffuseMat = new Material(Shader.Find("Unlit/Texture"));
-        lineRenderer.material = whiteDiffuseMat;
+        
 
         rb = GetComponent<Rigidbody2D>();
     }

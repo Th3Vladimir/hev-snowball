@@ -1028,10 +1028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8415503594367137615, guid: d8d9485317e832b4684d5d8c6be72e6d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8836588221281661695, guid: d8d9485317e832b4684d5d8c6be72e6d, type: 3}
       propertyPath: m_Camera
       value: 
