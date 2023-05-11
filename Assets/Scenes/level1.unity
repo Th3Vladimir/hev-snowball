@@ -469,6 +469,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 520213693}
     - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
+      propertyPath: loseCanvas
+      value: 
+      objectReference: {fileID: 1027945370}
+    - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
       propertyPath: fadeOutImage
       value: 
       objectReference: {fileID: 0}
@@ -888,7 +892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 102.09201, y: -80.869995}
+  m_AnchoredPosition: {x: 102.09204, y: -80.869995}
   m_SizeDelta: {x: 204.184, y: 161.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818314575
@@ -2081,6 +2085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e6a2b27188d6447b942333087ba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   panel: {fileID: 818314573}
 --- !u!114 &1990795600
 MonoBehaviour:

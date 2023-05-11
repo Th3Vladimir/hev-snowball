@@ -1032,6 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e6a2b27188d6447b942333087ba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   panel: {fileID: 664810993}
 --- !u!114 &678816440
 MonoBehaviour:
@@ -1891,6 +1892,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1047936264}
+    - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
+      propertyPath: loseCanvas
+      value: 
+      objectReference: {fileID: 1031100644}
     - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
       propertyPath: levelNameText
       value: 

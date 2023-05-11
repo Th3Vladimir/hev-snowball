@@ -105,12 +105,20 @@ public class Finish : MonoBehaviour
     public GameObject smallBall;
     public TextMeshProUGUI levelNameText;
     public float displayDuration = 1.0f;
+    [SerializeField] GameObject loseCanvas;
 
 
     public static bool isFading { get; private set; }
 
+    float maxSize = 1.8f;
+
+    float minSize = 0.5f;
+
     private void Start()
     {
+        if (loseCanvas != null)
+            loseCanvas.SetActive(false);
+
         StartCoroutine(FadeOut());        
     }
 
@@ -128,6 +136,11 @@ public class Finish : MonoBehaviour
                 PlayerPrefs.Save();
 
                 LoadScene(nextSceneName);
+            }
+            else
+            {
+                if (loseCanvas != null)
+                    loseCanvas.SetActive(true);
             }
         }
     }

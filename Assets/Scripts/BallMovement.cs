@@ -22,17 +22,9 @@ public class BallMovement : MonoBehaviour
     float maxLineLength = 5f;
     [SerializeField]
     float sizeIncreaseFactor = 0.01f;
-    [SerializeField]
-    float maxSize = 1.8f;
-    
-    float minSize = 0.5f;
-    [SerializeField]
-    GameObject loseCanvas;
 
     void Start()
     {
-        if (loseCanvas != null)
-            loseCanvas.SetActive(false);
 
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f;
@@ -68,11 +60,6 @@ public class BallMovement : MonoBehaviour
         {
             //rb.velocity = Vector3.zero;
             rb.AddForce(-rb.velocity.normalized * 0.1f, ForceMode2D.Force);
-        }
-        if (transform.localScale.x > maxSize || transform.localScale.x < minSize)
-        {
-            if(loseCanvas != null)
-                loseCanvas.SetActive(true);
         }
     }
     public void MouseControlsCheck()

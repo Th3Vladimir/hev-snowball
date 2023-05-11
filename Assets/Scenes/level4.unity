@@ -1825,6 +1825,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1047936264}
     - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
+      propertyPath: loseCanvas
+      value: 
+      objectReference: {fileID: 738640671}
+    - target: {fileID: 330064538657562207, guid: bb9e2bf0c7316da4a81177fca0acfca8, type: 3}
       propertyPath: levelNameText
       value: 
       objectReference: {fileID: 1973812614}
