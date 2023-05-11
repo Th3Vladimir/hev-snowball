@@ -54,6 +54,11 @@ public class levelSelector : MonoBehaviour
         {
             PlayerPrefs.SetInt("currentLevel", 1); // resets the progress on "I"
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            for (int i = 1; i <= 5; i++)
+            {
+                PlayerPrefs.SetInt("hideHintLevel" + i, 0); //open
+            }
         }
     }
 

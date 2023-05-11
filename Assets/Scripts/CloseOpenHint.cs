@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CloseOpenHint : MonoBehaviour
 {
@@ -14,9 +15,19 @@ public class CloseOpenHint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isActive = PlayerPrefs.GetInt("isActive");
-        CloseHint();
-        Invoke("OpenHint", 1f);
+        //isActive = PlayerPrefs.GetInt("isActive");
+        //CloseHint();
+
+        int isHidden = PlayerPrefs.GetInt("hideHintLevel" + SceneManager.GetActiveScene().buildIndex);
+        if(isHidden== 0)
+        {
+            Invoke("OpenHint", 1f);
+        }
+        else
+        {
+            CloseHint();
+        }
+        
 
     }
 
@@ -31,10 +42,14 @@ public class CloseOpenHint : MonoBehaviour
     {
         panel.SetActive(true);
         isClosed = false;
+
+        PlayerPrefs.SetInt("hideHintLevel"+SceneManager.GetActiveScene().buildIndex, 0); //open
     }
     public void CloseHint()
     {
         panel.SetActive(false);
         isClosed = true;
+
+        PlayerPrefs.SetInt("hideHintLevel" + SceneManager.GetActiveScene().buildIndex, 1); //closed
     }
 }
