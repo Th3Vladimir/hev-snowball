@@ -13,6 +13,7 @@ public class BallMovement : MonoBehaviour
     private float currentLineLength = 0f;
     private float lastSpeed;
 
+
     [SerializeField]
     float maxPower;
     [SerializeField]
@@ -21,14 +22,20 @@ public class BallMovement : MonoBehaviour
     float maxLineLength = 5f;
     [SerializeField]
     float sizeIncreaseFactor = 0.01f;
+    [SerializeField]
+    float maxSize = 1.8f;
+    [SerializeField]
+    GameObject loseCanvas;
 
     void Start()
     {
+        if (loseCanvas != null)
+            loseCanvas.SetActive(false);
+
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.positionCount = 2;
-        
         lineRenderer.startColor = Color.black;
         lineRenderer.endColor = Color.black;
 
@@ -44,6 +51,28 @@ public class BallMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restarts the level on "R"
         }
 
+        MouseControlsCheck();
+
+
+        float currentSpeed = rb.velocity.magnitude;
+
+        if (currentSpeed > 0.4f)
+        {
+            transform.localScale += new Vector3(sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime);
+        }
+        else
+        {
+            //rb.velocity = Vector3.zero;
+            rb.AddForce(-rb.velocity.normalized * 0.1f, ForceMode2D.Force);
+        }
+        if(transform.localScale.x > maxSize)
+        {
+            if(loseCanvas != null)
+                loseCanvas.SetActive(true);
+        }
+    }
+    public void MouseControlsCheck()
+    {
         if (Input.GetMouseButtonDown(0) && rb.velocity.magnitude < maxVelocity)
         {
             isDragging = true;
@@ -71,10 +100,10 @@ public class BallMovement : MonoBehaviour
         {
             isDragging = false;
             Vector3 endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
-            
+
+
             Vector2 direction = (endPoint - startPoint).normalized;
-            Vector2 force = -direction * ( (currentLineLength/maxLineLength) * maxPower);
+            Vector2 force = -direction * ((currentLineLength / maxLineLength) * maxPower);
             rb.AddForce(force, ForceMode2D.Impulse);
             Debug.Log($"force y: {force.y}, x {force.x}"); /*if the Y or X are near the maxPower value its works fine*/
             lineRenderer.SetPosition(1, transform.position);
@@ -83,19 +112,5 @@ public class BallMovement : MonoBehaviour
                 lineRenderer.enabled = false;
             }
         }
-
-
-        float currentSpeed = rb.velocity.magnitude;
-
-        if (currentSpeed > 0.4f)
-        {
-            transform.localScale += new Vector3(sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime, sizeIncreaseFactor * Time.deltaTime);
-        }
-        else
-        {
-            //rb.velocity = Vector3.zero;
-            rb.AddForce(-rb.velocity.normalized * 0.1f, ForceMode2D.Force);
-        }
-
     }
 }

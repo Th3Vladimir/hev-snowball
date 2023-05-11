@@ -13,7 +13,7 @@ public class levelSelector : MonoBehaviour
     void Start()
     {
         //reset progress
-        //PlayerPrefs.SetInt("currentLevel", 1);
+        PlayerPrefs.SetInt("currentLevel", 1);
         //--------------------------------------------------------------------
         currentLevel = PlayerPrefs.GetInt("currentLevel");
 
