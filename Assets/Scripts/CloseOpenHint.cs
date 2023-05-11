@@ -6,6 +6,7 @@ using TMPro;
 
 public class CloseOpenHint : MonoBehaviour
 {
+    public int isActive;
     [SerializeField]
     GameObject panel;
 
@@ -13,7 +14,7 @@ public class CloseOpenHint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isActive = PlayerPrefs.GetInt("isActive");
         CloseHint();
         Invoke("OpenHint", 1f);
 
