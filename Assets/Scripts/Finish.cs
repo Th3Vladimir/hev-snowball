@@ -2,124 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-//public class Finish : MonoBehaviour
-//{
-//    [SerializeField] GameObject player;
-//    [SerializeField] GameObject bigBall;
-
-//    private void OnTriggerEnter2D(Collider2D other)
-//    {
-//        Debug.Log("Collided with finish");
-
-//        float playerRadius = player.GetComponent<CircleCollider2D>().radius;
-//        float bigBallRadius = bigBall.GetComponent<CircleCollider2D>().radius;
-//        if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x)
-//        {
-//            // Player has reached the finish, and is small enough to proceed to next level
-//            // Add code here to load the next level, or to perform other actions as desired
-//            Debug.Log("Next Level");
-//        }
-//    }
-//}
-
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
-
-//public class Finish : MonoBehaviour
-//{
-//    public string nextLevelName;
-//    public GameObject player;
-//    public GameObject bigBall;
-//    public Image fadeOutImage;
-//    public TextMeshProUGUI levelNameText;
-//    public float fadeOutDuration = 10.0f;
-//    public float displayDuration = 1.0f;
-
-//    private bool isTransitioning = false;
-
-//    private void OnTriggerEnter2D(Collider2D other)
-//    {
-//        if (other.gameObject == player && !isTransitioning)
-//        {
-//            float playerRadius = player.GetComponent<CircleCollider2D>().radius;
-//            float bigBallRadius = bigBall.GetComponent<CircleCollider2D>().radius;
-//            if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x)
-//            {
-//                // Player has reached the finish, and is small enough to proceed to next level
-//                StartCoroutine(TransitionToNextLevel());
-//            }
-//        }
-//    }
-
-//    private IEnumerator TransitionToNextLevel()
-//    {
-//        isTransitioning = true;
-
-//        // Fade out
-//        float t = 0.0f;
-//        while (t < fadeOutDuration)
-//        {
-//            float alpha = Mathf.Lerp(0.0f, 1.0f, t / fadeOutDuration);
-//            fadeOutImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
-//            t += Time.deltaTime;
-//            yield return null;
-//        }
-
-//        // Load next level
-//        SceneManager.LoadScene(nextLevelName);
-
-//        // Fade in
-//        t = 0.0f;
-//        while (t < fadeOutDuration)
-//        {
-//            float alpha = Mathf.Lerp(1.0f, 0.0f, t / fadeOutDuration);
-//            fadeOutImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
-//            t += Time.deltaTime;
-//            yield return null;
-//        }
-
-//        // Display level name
-//        levelNameText.enabled = true;
-//        yield return new WaitForSeconds(displayDuration);
-
-//        // Hide level name
-//        levelNameText.enabled = false;
-
-//        isTransitioning = false;
-//    }
-//}
-public class Finish : MonoBehaviour
+[SerializeField] class Finish : MonoBehaviour
 {
-    public Image transitionImage;
-    public float transitionSpeed = 2f;
+    [SerializeField] Image transitionImage;
+    [SerializeField] float transitionSpeed = 2f;
 
-    public string nextSceneName;
-    public GameObject player;
-    public GameObject bigBall;
-    public GameObject smallBall;
-    public TextMeshProUGUI levelNameText;
-    public float displayDuration = 1.0f;
+    [SerializeField] string nextSceneName;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject bigBall;
+    [SerializeField] GameObject smallBall;
+    [SerializeField] TextMeshProUGUI levelNameText;
+    [SerializeField] float displayDuration = 1.0f;
     [SerializeField] GameObject loseCanvas;
-
 
     public static bool isFading { get; private set; }
 
-    float maxSize = 1.8f;
-
-    float minSize = 0.5f;
 
     private void Start()
     {
         if (loseCanvas != null)
             loseCanvas.SetActive(false);
 
-        StartCoroutine(FadeOut());        
+        StartCoroutine(FadeOut());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -129,9 +36,13 @@ public class Finish : MonoBehaviour
             float playerRadius = player.GetComponent<CircleCollider2D>().radius;
             float bigBallRadius = bigBall.GetComponent<CircleCollider2D>().radius;
             float smallBallRadius = smallBall.GetComponent<CircleCollider2D>().radius;
-            if (playerRadius * player.transform.localScale.x < bigBallRadius * bigBall.transform.localScale.x && playerRadius * player.transform.localScale.x > smallBallRadius * smallBall.transform.localScale.x)
+            if (
+                playerRadius * player.transform.localScale.x
+                    < bigBallRadius * bigBall.transform.localScale.x
+                && playerRadius * player.transform.localScale.x
+                    > smallBallRadius * smallBall.transform.localScale.x
+            )
             {
-                // Player has reached the finish, and is small enough to proceed to next level
                 PlayerPrefs.SetInt("currentLevel", SceneManager.GetActiveScene().buildIndex + 1);
                 PlayerPrefs.Save();
 
@@ -145,8 +56,7 @@ public class Finish : MonoBehaviour
         }
     }
 
-
-    public void LoadScene(string sceneName)
+    [SerializeField] void LoadScene(string sceneName)
     {
         if (!isFading)
         {
@@ -170,14 +80,13 @@ public class Finish : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-
         float tBlack = 1f;
 
         levelNameText.enabled = true;
 
-        while (tBlack> 0f)
+        while (tBlack > 0f)
         {
-            tBlack-= Time.deltaTime * transitionSpeed;
+            tBlack -= Time.deltaTime * transitionSpeed;
             transitionImage.color = new Color(0, 0, 0, 1);
             yield return null;
         }
@@ -192,7 +101,6 @@ public class Finish : MonoBehaviour
         }
 
         isFading = false;
-        
         levelNameText.enabled = false;
     }
 }

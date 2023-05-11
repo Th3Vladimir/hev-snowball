@@ -13,19 +13,15 @@ public class levelSelector : MonoBehaviour
 
     void Start()
     {
-        //reset progress
-        ///*PlayerPrefs.SetInt("currentLevel", 1);*/
-        //--------------------------------------------------------------------
         currentLevel = PlayerPrefs.GetInt("currentLevel");
 
-        if(currentLevel <= 0)
+        if (currentLevel <= 0)
         {
             PlayerPrefs.SetInt("currentLevel", 1);
         }
 
         foreach (Transform button in panelButtons.transform)
         {
-
             var buttonText = button.GetComponent<Button>().GetComponentInChildren<TextMeshProUGUI>();
 
             int buttonIndex = int.Parse(buttonText.text.Replace("Level ", "")); //handle this better
@@ -34,12 +30,10 @@ public class levelSelector : MonoBehaviour
             {
                 button.GetComponent<Button>().interactable = true;
             }
-
             else if (buttonIndex == currentLevel)
             {
                 button.GetComponent<Button>().Select();
             }
-
             else
             {
                 button.GetComponent<Button>().interactable = false;
@@ -47,7 +41,6 @@ public class levelSelector : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -61,6 +54,4 @@ public class levelSelector : MonoBehaviour
             }
         }
     }
-
-
 }

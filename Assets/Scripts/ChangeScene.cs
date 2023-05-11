@@ -10,15 +10,12 @@ public class ChangeScene : MonoBehaviour
     public Image transitionImage;
     public float transitionSpeed = 2f;
     private bool isFading;
-  
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(FadeOut());
     }
 
-    // Update is called once per frame
-    
     public void LoadScene(string sceneName)
     {
         if (!isFading)
@@ -43,10 +40,7 @@ public class ChangeScene : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-
         float tBlack = 1f;
-
-        
 
         while (tBlack > 0f)
         {
@@ -65,7 +59,5 @@ public class ChangeScene : MonoBehaviour
         }
 
         isFading = false;
-
-       
     }
 }
