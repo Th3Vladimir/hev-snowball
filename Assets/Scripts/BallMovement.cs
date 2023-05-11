@@ -24,6 +24,8 @@ public class BallMovement : MonoBehaviour
     float sizeIncreaseFactor = 0.01f;
     [SerializeField]
     float maxSize = 1.8f;
+    
+    float minSize = 0.5f;
     [SerializeField]
     GameObject loseCanvas;
 
@@ -67,7 +69,7 @@ public class BallMovement : MonoBehaviour
             //rb.velocity = Vector3.zero;
             rb.AddForce(-rb.velocity.normalized * 0.1f, ForceMode2D.Force);
         }
-        if(transform.localScale.x > maxSize)
+        if (transform.localScale.x > maxSize || transform.localScale.x < minSize)
         {
             if(loseCanvas != null)
                 loseCanvas.SetActive(true);
